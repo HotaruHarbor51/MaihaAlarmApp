@@ -1,0 +1,61 @@
+version: "3"
+
+volumes:
+  php_sockert:
+services:
+  nginx:
+    image: maiha-alarm-nginx
+    # コンテナ名を明示的に指定する
+    container_name: maiha-alarm-nginx
+    # ./nginx/Dockerfile でイメージをビルド
+    build:
+      context: .
+      dockerfile: ./nginx/Dockerfile
+    # 80 ポートをコンテナの 80 ポートに割り当て
+    ports:
+      - "80:80"
+    # ローカルの /app フォルダを
+    # コンテナの/appにマウント
+    volumes:
+      - type: volume
+        source: php_sockert
+        target: /var/run
+        volume:
+          nocopy: true
+      - type: bind
+        source: ../app
+        target: /app
+      - type: bind
+        source: ./nginx/default.conf
+        target: /etc/nginx/conf.d/default.conf
+      - type: bind
+        source: ./nginx/nginx.conf
+        target: /etc/nginx/nginx.conf
+    depends_on:
+      - php
+
+  php:
+    image: maiha-alarm-php
+    # コンテナ名を明示的に指定する
+    container_name: maiha-alarm-php
+    # ./php/Dockerfile でイメージをビルド
+    build:
+      context: .
+      dockerfile: ./php/Dockerfile
+    volumes:
+      # ローカルの /app フォルダをコンテナの/appにマウント
+      - type: volume
+        source: php_sockert
+        target: /var/run
+        volume:
+          nocopy: true
+      - type: bind
+        source: ../app
+        target: /app
+      # ローカルの php.iniをコンテナのphp.iniにマウント
+      - type: bind
+        source: ./php/php.ini
+        target: /usr/local/etc/php/php.ini
+      - type: bind
+        source: ./php/zz-docker.conf
+        target: /usr/local/etc/php-fpm.d/zz-docker.conf
