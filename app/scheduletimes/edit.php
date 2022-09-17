@@ -1,5 +1,6 @@
 <!-- アラーム設定 新規追加画面 -->
 <?php include "../layout/header.php"; ?>
+<script src="/js/post-confirm.js"></script>
 
 <?php
   $id = $_GET['id'];
@@ -64,7 +65,7 @@
 <?php } ?>
 
 <div class="content-wrapper">
-  <nav aria-label="breadcrumb">
+  <nav aria-label="breadcrumb" class="maiha-alarm-breadcrumb">
     <ol class="breadcrumb">
       <li class="breadcrumb-item"><a href="/index.php">ホーム画面</a></li>
       <li class="breadcrumb-item"><a href="index.php">アラーム設定マスタ 一覧</a></li>
@@ -73,12 +74,12 @@
   </nav>
 
   <h2 class="maiha-caption">アラーム設定マスタ</h2>
-  <div class="card">
+  <div class="card maiha-alarm-card">
     <div class="card-header maiha-header">
       <h2>編集</h2>
     </div>
     <div class="card-body maiha-body">
-    <form method="post">
+    <form id="MaihaAlarmForm" method="post">
       <table class="table table-success table-bordered table-responsive">
         <tbody>
           <tr>
@@ -117,11 +118,11 @@
             </td>
           </tr>
           <tr>
-            <th>UUID<br/>（LINEのみ入力）</th>
+            <th>UUID<br/>（<span class="maiha-pickup">LINE</span>のみ入力）</th>
             <td><input type="text" name="uuid" id="uuid" class="form-control" value=<?= $data['uuid'] ?>></td>
           </tr>
           <tr>
-            <th>Eメールアドレス<br/>（メールアドレスのみ入力）</th>
+            <th>Eメールアドレス<br/>（<span class="maiha-pickup">メールアドレス</span>のみ入力）</th>
             <td><input type="text" name="email" id="email" class="form-control" value=<?= $data['email'] ?> ></td>
           </tr>
         </tbody>

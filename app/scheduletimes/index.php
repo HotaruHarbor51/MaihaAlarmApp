@@ -67,7 +67,7 @@ EOM;
 
 <div class="content-wrapper">
 
-  <nav aria-label="breadcrumb">
+  <nav aria-label="breadcrumb" class="maiha-alarm-breadcrumb">
     <ol class="breadcrumb">
       <li class="breadcrumb-item"><a href="/index.php">ホーム画面</a></li>
       <li class="breadcrumb-item active"><a href="index.php">アラーム設定マスタ 一覧</a></li>
@@ -76,7 +76,7 @@ EOM;
 
   <h2 class="maiha-caption">アラーム設定マスタ</h2>
 
-  <div class="card">
+  <div class="card maiha-alarm-card">
     <div class="card-header maiha-header">
       <h2>設定リスト</h2>
     </div>
@@ -85,7 +85,7 @@ EOM;
       <?= $addLink ?>
       <?php if($datas && $statement->rowCount() > 0){ ?>
         <table class="table table-success table-striped table-bordered table-responsive">
-          <thead>
+          <thead class="maiha-table-thead">
             <th>No</th>
             <th>タイトル</th>
             <th>通知方法</th>
