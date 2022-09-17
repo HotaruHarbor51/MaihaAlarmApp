@@ -1,0 +1,30 @@
+.content-wrapper{
+  margin: 16px;
+}
+
+.frontpage-wrapper{
+  border: 4px solid;
+  padding: 16px;
+  border-color: #374820;
+  background-color: #F0F1F2
+}
+
+footer {
+  text-align: center;
+}
+
+body {
+  background-color: #374820 !important;
+}
+
+.maiha-header h2 {
+  color: #ACC180;
+}
+
+.maiha-body {
+  background-color: #F0F1F2;
+}
+
+.maiha-caption {
+  background-color: #FFF799;
+}
