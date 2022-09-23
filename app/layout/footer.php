@@ -1,5 +1,5 @@
 <div>
   <footer>
-  © 2022  まどろみみっくろん 色織まいは
+    <span class="text-light">© 2022  まどろみみっくろん</span>
   </footer>
 </div>
