@@ -114,7 +114,7 @@
           <tr>
             <th>説明を追加</th>
             <td>
-              <textarea name="description" id="description" rows="3" cols="50" value=<?= $data['description'] ?> class="form-control"></textarea>
+              <textarea name="description" id="description" rows="3" cols="50" class="form-control"><?= nl2br($data['description']) ?></textarea>
             </td>
           </tr>
           <tr>
