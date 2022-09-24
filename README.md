@@ -21,13 +21,13 @@ Arduino IDEからこのファイルを書き込んだときに次の処理が行
 - PostgreSQL：14.3
 
 ## スクリーンショット
+![maiha_alarm_screenshot](https://user-images.githubusercontent.com/102233603/192121615-65472a84-221f-4e1e-a61a-56a011b50d4f.JPG)
 
 ## 使い方
-1. appディレクトリの直下にdatabase.phpを追加してください。database.phpの中身はこちらです。ご自身の環境に合わせて値を変更してください。
+1. appディレクトリの直下にdatabase.phpを追加してください。database.phpの記入例は[こちら](https://github.com/HotaruHarbor51/MaihaAlarmApp4/issues/3#issue-1384834208)です。ご自身の環境に合わせて値を変更してください。
 2. ローカル環境で動かす場合はそのままの構成でご利用ください。本番環境で動かす場合はapp以下のファイルを本アプリのルートとなるディレクトリに置いてください。
 3. トップ画面からアラーム設定マスタのリンクをクリックしますと一覧画面が開きます。
 4. 一覧画面にある「新規作成」ボタンをクリックしますと通知設定を登録することができます。一覧画面にある編集ボタン、削除ボタンからアラーム設定の編集、削除を行うことができます。
-
 
 ## テーブル構成
 
@@ -37,8 +37,8 @@ Arduino IDEからこのファイルを書き込んだときに次の処理が行
 |-------|----------|----------|----------|----------|
 |id | bigint | | true | Primary Key |
 |title | character varying | 100| true | タイトル |
-|noticetime | timestamp | | true | 通知時刻 |
-|advancenotice | integer | | | 事前通知(分) |
+|noticetime | timestamp without time zone | | true | 通知時刻 |
+|advancenotice | integer | | | 事前通知(単位は分、規定値は0) |
 |advancetime | timestamp without time zone | | | 事前通知時間(通知時刻から事前通知(分)を引いた時間) |
 |description | character varying | 500 | | 説明 |
 |notification_method | character varying | 20 | true | 通知方法 |
@@ -46,7 +46,8 @@ Arduino IDEからこのファイルを書き込んだときに次の処理が行
 |email | character varying | 255 | | メールアドレス |
 
 ## Arduino ESP32 回路図
-
+![ESP32andDS3231_ブレッドボード](https://user-images.githubusercontent.com/102233603/192121241-561c4b20-89db-45a1-b3e9-71c5662bc41b.jpg)
+![ESP32andDS3231_回路図](https://user-images.githubusercontent.com/102233603/192121243-3da55be2-bb90-4c47-9207-fda11720d140.jpg)
 
 ## 本アプリで実装したかった機能（未実装機能）
 - テーブルから通知時刻を過ぎているデータを取得する機能
